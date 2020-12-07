@@ -7,15 +7,7 @@ export default class BaiTapGioHang extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gioHang: [
-        {
-          maSP: 1,
-          tenSP: "VinSmart Live",
-          donGia: 5700000,
-          hinhAnh: "./img/vsphone.jpg",
-          soLuong: 1,
-        },
-      ],
+      gioHang: [],
     };
   }
 
@@ -43,11 +35,40 @@ export default class BaiTapGioHang extends Component {
     this.setState({
       gioHang: gioHangCapNhat,
     });
+  };
 
-    // console.log("spClicked:", sanPhamClicked);
-    // this.setState({
-    //   gioHang: [...this.state.gioHang, sanPhamClicked],
-    // });
+  // Đặt sự kiện xóa giỏ hàng tại BTGioHang
+  xoaGioHang = (maSP) => {
+    // Tìm trong giỏ hàng có sp chứa maSP được click thì xoá
+    var gioHangCapNhat = [...this.state.gioHang];
+    let index = gioHangCapNhat.findIndex((sp) => sp.maSP === maSP);
+    if (index !== -1) {
+      gioHangCapNhat.splice(index, 1);
+    }
+    // Cập nhật lại state giỏ hàng và render giao diện
+    this.setState({
+      gioHang: gioHangCapNhat,
+    });
+  };
+
+  // Hàm tăng giảm số lượng
+  tangGiamSoLuong = (maSP, tangGiam) => {
+    var gioHangCapNhat = [...this.state.gioHang];
+    let index = gioHangCapNhat.findIndex((sp) => sp.maSP === maSP);
+
+    // Xử lý tăng giảm số lượng
+    if (tangGiam) {
+      gioHangCapNhat[index].soLuong += 1;
+    } else {
+      if (gioHangCapNhat[index].soLuong > 1) {
+        gioHangCapNhat[index].soLuong -= 1;
+      }
+    }
+
+    //cập nhật giá trị và render giỏ hàng
+    this.setState({
+      gioHang: gioHangCapNhat,
+    });
   };
   render() {
     let tongSoLuong = this.state.gioHang.reduce((tsl, spGH, index) => {
@@ -56,7 +77,11 @@ export default class BaiTapGioHang extends Component {
     return (
       <div>
         <h3 className="text-center">Bài tập giỏ hàng</h3>
-        <ModalGioHang gioHang={this.state.gioHang} />
+        <ModalGioHang
+          gioHang={this.state.gioHang}
+          xoaGioHang={this.xoaGioHang}
+          tangGiamSoLuong={this.tangGiamSoLuong}
+        />
 
         <div className="text-right">
           <span

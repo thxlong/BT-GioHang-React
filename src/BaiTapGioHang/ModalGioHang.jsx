@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class ModalGioHang extends Component {
   render() {
-    const { gioHang } = this.props; // Lấy dữ liệu giỏ hàng từ BaiTapGioHang.jsx
+    const { gioHang, xoaGioHang, tangGiamSoLuong } = this.props; // Lấy dữ liệu giỏ hàng từ BaiTapGioHang.jsx
     return (
       <div
         className="modal fade"
@@ -32,12 +32,12 @@ export default class ModalGioHang extends Component {
               <table className="table">
                 <thead>
                   <tr>
-                    <td>Mã SP</td>
-                    <td>Hình ảnh</td>
-                    <td>Tên SP</td>
-                    <td>Số lượng</td>
-                    <td>Đơn giá</td>
-                    <td>Thành tiền</td>
+                    <th>Mã SP</th>
+                    <th>Hình ảnh</th>
+                    <th>Tên SP</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,13 +53,50 @@ export default class ModalGioHang extends Component {
                           />
                         </td>
                         <td>{spGH.tenSP}</td>
-                        <td>{spGH.soLuong}</td>
+                        <td>
+                          <button
+                            className="btn-info"
+                            onClick={() => tangGiamSoLuong(spGH.maSP, false)}
+                          >
+                            -
+                          </button>
+                          {spGH.soLuong}
+                          <button
+                            className="btn-info"
+                            onClick={() => tangGiamSoLuong(spGH.maSP, true)}
+                          >
+                            +
+                          </button>
+                        </td>
                         <td>{spGH.donGia.toLocaleString()}</td>
                         <td>{(spGH.donGia * spGH.soLuong).toLocaleString()}</td>
+                        <td>
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => xoaGioHang(spGH.maSP)}
+                          >
+                            Xoá
+                          </button>
+                        </td>
                       </tr>
                     );
                   })}
                 </tbody>
+
+                <tfoot>
+                  <tr>
+                    <td colSpan="5"></td>
+                    <td>Tổng tiền</td>
+                    <td>
+                      {this.props.gioHang
+                        .reduce((tongTien, spGioHang, index) => {
+                          return (tongTien +=
+                            spGioHang.soLuong * spGioHang.donGia);
+                        }, 0)
+                        .toLocaleString()}
+                    </td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
             <div className="modal-footer">
