@@ -44,10 +44,10 @@ export default class BaiTapGioHang extends Component {
       gioHang: gioHangCapNhat,
     });
 
-    console.log("spClicked:", sanPhamClicked);
-    this.setState({
-      gioHang: [...this.state.gioHang, sanPhamClicked],
-    });
+    // console.log("spClicked:", sanPhamClicked);
+    // this.setState({
+    //   gioHang: [...this.state.gioHang, sanPhamClicked],
+    // });
   };
   render() {
     let tongSoLuong = this.state.gioHang.reduce((tsl, spGH, index) => {
