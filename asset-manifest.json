@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/BT-GioHang-React/static/css/main.2e7919c8.chunk.css",
+    "main.js": "/BT-GioHang-React/static/js/main.c8e122f2.chunk.js",
+    "main.js.map": "/BT-GioHang-React/static/js/main.c8e122f2.chunk.js.map",
+    "runtime-main.js": "/BT-GioHang-React/static/js/runtime-main.823856a2.js",
+    "runtime-main.js.map": "/BT-GioHang-React/static/js/runtime-main.823856a2.js.map",
+    "static/js/2.cca56ddd.chunk.js": "/BT-GioHang-React/static/js/2.cca56ddd.chunk.js",
+    "static/js/2.cca56ddd.chunk.js.map": "/BT-GioHang-React/static/js/2.cca56ddd.chunk.js.map",
+    "static/js/3.4e2473a9.chunk.js": "/BT-GioHang-React/static/js/3.4e2473a9.chunk.js",
+    "static/js/3.4e2473a9.chunk.js.map": "/BT-GioHang-React/static/js/3.4e2473a9.chunk.js.map",
+    "index.html": "/BT-GioHang-React/index.html",
+    "static/css/main.2e7919c8.chunk.css.map": "/BT-GioHang-React/static/css/main.2e7919c8.chunk.css.map",
+    "static/js/2.cca56ddd.chunk.js.LICENSE.txt": "/BT-GioHang-React/static/js/2.cca56ddd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.823856a2.js",
+    "static/js/2.cca56ddd.chunk.js",
+    "static/css/main.2e7919c8.chunk.css",
+    "static/js/main.c8e122f2.chunk.js"
+  ]
+}
